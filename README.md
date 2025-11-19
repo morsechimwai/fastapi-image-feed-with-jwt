@@ -1,6 +1,6 @@
 # Image Feed API
 
-A modern image and video feed application built with FastAPI backend and Streamlit frontend.
+A simple image feed application with FastAPI backend and Streamlit frontend
 
 ## Project Structure
 
@@ -9,8 +9,8 @@ A modern image and video feed application built with FastAPI backend and Streaml
 ├── backend/                 # Backend application
 │   └── app/
 │       ├── __init__.py
-│       ├── main.py         # FastAPI application entry point
-│       ├── core/           # Core configuration and settings
+│       ├── main.py         # Start FastAPI application
+│       ├── core/           # Configuration and main settings
 │       │   ├── __init__.py
 │       │   └── config.py   # Application settings
 │       ├── db/             # Database configuration
@@ -18,7 +18,7 @@ A modern image and video feed application built with FastAPI backend and Streaml
 │       │   ├── base.py     # SQLAlchemy base
 │       │   ├── session.py  # Database session management
 │       │   ├── models.py   # Database models
-│       │   └── init_db.py  # Database initialization
+│       │   └── init_db.py  # Initialize database
 │       ├── models/         # Model exports (aliases)
 │       │   └── __init__.py
 │       ├── schemas/        # Pydantic schemas
@@ -38,16 +38,16 @@ A modern image and video feed application built with FastAPI backend and Streaml
 │       │   └── imagekit.py # ImageKit integration
 │       └── users/          # User management
 │           ├── __init__.py
-│           └── manager.py  # User manager and auth
+│           └── manager.py  # User manager and authentication
 ├── frontend/               # Frontend application
 │   ├── __init__.py
 │   └── app.py             # Streamlit application
 ├── tests/                  # Test files
 │   ├── __init__.py
 │   └── conftest.py        # Pytest configuration
-├── main.py                # Application entry point
+├── main.py                # Start application
 ├── pyproject.toml         # Project dependencies
-├── env.example            # Environment variables example
+├── env.example            # Example environment variables
 └── README.md              # This file
 ```
 
@@ -55,11 +55,11 @@ A modern image and video feed application built with FastAPI backend and Streaml
 
 - **Authentication**: JWT-based user authentication
 - **Image/Video Upload**: Upload images and videos with ImageKit integration
-- **Feed**: View all posts in a feed format
-- **User Management**: Register, login, and manage user accounts
-- **Post Management**: Create, view, and delete posts
+- **Feed**: View all posts in feed format
+- **User Management**: Register, login and manage user accounts
+- **Post Management**: Create, view and delete posts
 
-## Setup
+## Installation
 
 ### Prerequisites
 
@@ -69,25 +69,29 @@ A modern image and video feed application built with FastAPI backend and Streaml
 
 ### Installation
 
-1. Clone the repository:
+1. Clone repository:
+
 ```bash
 git clone <repository-url>
 cd fastapi-image-feed-api
 ```
 
 2. Install dependencies:
+
 ```bash
 uv sync
 # or
 pip install -e .
 ```
 
-3. Create a `.env` file from `env.example`:
+3. Create `.env` file from `env.example`:
+
 ```bash
 cp env.example .env
 ```
 
 4. Update `.env` with your configuration:
+
 ```env
 SECRET=your-secret-key-here
 IMAGEKIT_PUBLIC_KEY=your-imagekit-public-key
@@ -96,7 +100,7 @@ IMAGEKIT_URL_ENDPOINT=your-imagekit-url-endpoint
 DATABASE_URL=sqlite+aiosqlite:///./image-feed.sqlite3
 ```
 
-## Running the Application
+## Run Application
 
 ### Backend (FastAPI)
 
@@ -104,7 +108,7 @@ DATABASE_URL=sqlite+aiosqlite:///./image-feed.sqlite3
 python main.py
 ```
 
-The API will be available at `http://localhost:8888`
+API will be available at `http://localhost:8888`
 API documentation: `http://localhost:8888/docs`
 
 ### Frontend (Streamlit)
@@ -113,45 +117,61 @@ API documentation: `http://localhost:8888/docs`
 streamlit run frontend/app.py
 ```
 
-The frontend will be available at `http://localhost:8501`
+Frontend will be available at `http://localhost:8501`
 
 ## API Endpoints
 
 ### Authentication
-- `POST /auth/register` - Register a new user
+
+- `POST /auth/register` - Register new user
 - `POST /auth/jwt/login` - Login and get JWT token
 - `POST /auth/forgot-password` - Request password reset
 - `POST /auth/verify` - Verify email
 
 ### Users
-- `GET /users/me` - Get current user info
+
+- `GET /users/me` - View current user information
 - `PATCH /users/me` - Update current user
 
 ### Posts
-- `POST /upload` - Upload an image or video
-- `GET /feed` - Get all posts in feed
-- `DELETE /post/{post_id}` - Delete a post
+
+- `POST /upload` - Upload image or video
+- `GET /feed` - View all posts in feed
+- `DELETE /post/{post_id}` - Delete post
 
 ## Development
 
 ### Code Structure
 
-The project follows best practices for FastAPI applications:
+This project follows best practices for FastAPI applications:
 
-- **Separation of Concerns**: Clear separation between models, schemas, API routes, and services
-- **Dependency Injection**: Using FastAPI's dependency system
-- **Type Safety**: Using Pydantic for data validation
-- **Async/Await**: Fully async database operations
-- **Configuration Management**: Centralized settings with Pydantic Settings
+- **Separation of Concerns**: Clearly separate models, schemas, API routes and services
+- **Dependency Injection**: Use dependency system of FastAPI
+- **Type Safety**: Use Pydantic for data validation
+- **Async/Await**: All database operations are async
+- **Configuration Management**: Configuration management with Pydantic Settings
 
-### Adding New Features
+### Add New Features
 
-1. **New API Endpoint**: Add to `backend/app/api/v1/`
-2. **New Model**: Add to `backend/app/db/models.py`
-3. **New Schema**: Add to `backend/app/schemas/`
-4. **New Service**: Add to `backend/app/services/`
+1. **New API Endpoint**: add new API endpoint in `backend/app/api/v1/`
+2. **New Model**: add new model in `backend/app/db/models.py`
+3. **New Schema**: add new schema in `backend/app/schemas/`
+4. **New Service**: add new service in `backend/app/services/`
 
-## License
+## Contributing
 
-See LICENSE file for details.
+ผมยังต้องฝึกอีกเยอะและโปรเจคนี้ก็ยังมีช่องว่างให้พัฒนาอีกมากครับ
+หากคุณพบเห็นส่วนไหนที่สามารถปรับปรุงให้ดีขึ้นได้ — ไม่ว่าจะเล็กหรือใหญ่ — ยินดีรับทุกความช่วยเหลือจากทุก ๆ ท่านเลยครับ 🙏
 
+ขั้นตอนร่วมสนับสนุน:
+
+1. Fork repository
+2. สร้าง branch ใหม่สำหรับการปรับปรุงของคุณ
+3. ส่ง Pull Request พร้อมเล่าว่าคุณปรับปรุงอะไร อย่างไรบ้าง และทำไมถึงสำคัญ
+
+ทุกการมีส่วนร่วม ทั้งโค้ด ไอเดีย หรือ feedback ช่วยให้โปรเจคนี้เติบโตเร็วขึ้นมากครับ
+ขอบคุณที่มาช่วยกันสร้างสิ่งนี้ให้ดีขึ้นไปด้วยกันครับ 🩵
+
+---
+
+**🧑‍💻 Happy Hacking!**
